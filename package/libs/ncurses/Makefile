@@ -82,11 +82,7 @@ CONFIGURE_ARGS += \
 	--with-pkg-config-libdir=/usr/lib/pkgconfig \
 	--enable-widec \
 	--enable-ext-colors \
-	--with-versioned-syms \
-	--disable-wattr-macros \
-	--disable-relink \
 	--disable-termcap \
-	--enable-ext-colors \
 	--with-build-cppflags=-D_GNU_SOURCE
 
 CONFIGURE_VARS += \
