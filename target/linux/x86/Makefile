@@ -19,8 +19,7 @@ KERNELNAME:=bzImage
 
 include $(INCLUDE_DIR)/target.mk
 
-DEFAULT_PACKAGES += partx-utils mkf2fs fdisk e2fsprogs \
-htop lm-sensors autocore automount luci-proto-bonding luci-app-zerotier luci-app-xlnetacc ca-certificates
+DEFAULT_PACKAGES += partx-utils mkf2fs fdisk e2fsprogs
 $(eval $(call BuildTarget))
 
 $(eval $(call $(if $(CONFIG_ISO_IMAGES),SetupHostCommand,Ignore),mkisofs, \
