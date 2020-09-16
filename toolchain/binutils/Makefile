@@ -31,6 +31,10 @@ ifeq ($(PKG_VERSION),2.34)
   PKG_HASH:=f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952
 endif
 
+ifeq ($(PKG_VERSION),2.35)
+  PKG_HASH:=1b11659fb49e20e18db460d44485f09442c8c56d5df165de9461eb09c8302f85
+endif
+
 HOST_BUILD_PARALLEL:=1
 
 PATCH_DIR:=./patches/$(PKG_VERSION)
@@ -50,10 +54,6 @@ HOST_CONFIGURE_ARGS = \
 	--disable-nls \
 	--disable-sim \
 	--disable-gdb \
-	--enable-relro \
-	--enable-default-hash-style=gnu \
-	--with-pic \
-	--with-mmap \
 	$(GRAPHITE_CONFIGURE) \
 	$(SOFT_FLOAT_CONFIG_OPTION) \
 	$(call qstrip,$(CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS))
