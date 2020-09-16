@@ -13,8 +13,8 @@ __target_inc=1
 DEVICE_TYPE?=router
 
 # Default packages - the really basic set
-DEFAULT_PACKAGES:=base-files libc libgcc busybox dropbear mtd uci opkg netifd fstools uclient-fetch logd urandom-seed urngd \
-block-mount coremark kmod-nf-nathelper kmod-nf-nathelper-extra kmod-ipt-raw wget libustream-openssl ca-certificates \
+DEFAULT_PACKAGES:=base-files libc libgcc busybox dropbear uci opkg netifd fstools uclient-fetch logd urandom-seed urngd \
+kmod-nf-nathelper kmod-nf-nathelper-extra kmod-ipt-raw wget libustream-openssl ca-certificates \
 default-settings luci luci-app-ddns luci-app-upnp luci-app-webadmin \
 luci-app-sfe luci-app-nlbwmon luci-app-accesscontrol luci-app-cpufreq
 # For the basic set
