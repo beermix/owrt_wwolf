@@ -64,8 +64,6 @@ endef
 
 CONFIGURE_ARGS += \
 	--enable-echo \
-	--without-cxx \
-	--without-cxx-binding \
 	--enable-const \
 	--enable-overwrite \
 	--enable-pc-files \
@@ -91,8 +89,8 @@ CONFIGURE_ARGS += \
 	--enable-ext-colors \
 	--with-build-cppflags=-D_GNU_SOURCE
 
-#CONFIGURE_VARS += \
-#	cf_try_fPIC=no
+CONFIGURE_VARS += \
+	cf_try_fPIC=no
 
 HOST_CFLAGS += $(HOST_FPIC)
 
