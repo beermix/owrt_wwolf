@@ -76,7 +76,6 @@ CONFIGURE_ARGS += \
 	--without-profile \
 	--with-progs \
 	--without-tests \
-	--disable-big-core \
 	--disable-home-terminfo \
 	--with-normal \
 	--with-shared \
@@ -84,10 +83,16 @@ CONFIGURE_ARGS += \
 	--with-default-terminfo-dir=/usr/share/terminfo \
 	--with-pkg-config-libdir=/usr/lib/pkgconfig \
 	--enable-widec \
+	--enable-ext-colors \
+	--with-versioned-syms \
+	--disable-wattr-macros \
+	--disable-relink \
+	--disable-termcap \
+	--enable-ext-colors \
 	--with-build-cppflags=-D_GNU_SOURCE
 
-CONFIGURE_VARS += \
-	cf_try_fPIC=no
+#CONFIGURE_VARS += \
+#	cf_try_fPIC=no
 
 HOST_CFLAGS += $(HOST_FPIC)
 
@@ -143,6 +148,8 @@ ifneq ($(HOST_OS),FreeBSD)
 		$(CP) $(PKG_INSTALL_DIR)/usr/share/terminfo/$$$$file \
 			$(1)/usr/share/terminfo/$$$$file; \
 	done
+	$(INSTALL_DIR) $(1)/usr/share/tabset
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/tabset $(1)/usr/share/
 endif
 endef
 
