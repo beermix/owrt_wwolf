@@ -22,4 +22,4 @@ update:
 		git diff binutils-2_34..origin/binutils-2_34-branch | filterdiff --exclude="*/bfd/version.h"; \
 	) > binutils-stable-branch.patch
 	git diff --exit-code binutils-stable-branch.patch
-	mv -f binutils-stable-branch.patch ./toolchain/binutils/patches/2.35/000-binutils35-stable-branch.patch
+	mv -f binutils-stable-branch.patch ./toolchain/binutils/patches/2.34/000-binutils34-stable-branch.patch
