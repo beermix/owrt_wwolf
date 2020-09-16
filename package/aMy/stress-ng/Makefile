@@ -1,7 +1,7 @@
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
-# https://kernel.ubuntu.com/~cking/tarballs/stress-ng/?C=M;O=D 
+# https://kernel.ubuntu.com/~cking/tarballs/stress-ng/?C=M;O=D
 
 include $(TOPDIR)/rules.mk
 
@@ -29,7 +29,7 @@ define Package/stress-ng
   CATEGORY:=Utilities
   TITLE:=stress-ng is a stress test utility
   URL:=https://kernel.ubuntu.com/~cking/stress-ng/
-  DEPENDS:=+zlib +libbsd
+  DEPENDS:=+zlib
 endef
 
 define Package/stress-ng/description
