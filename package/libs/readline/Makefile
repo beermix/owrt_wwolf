@@ -52,6 +52,8 @@ define Package/libreadline/description
 	history expansion on previous commands.
 endef
 
+TARGET_CFLAGS := -O2 $(filter-out -O%,$(TARGET_CFLAGS))
+
 CONFIGURE_ARGS += --with-curses --disable-install-examples
 
 CONFIGURE_VARS += \
