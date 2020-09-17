@@ -29,12 +29,13 @@ include $(INCLUDE_DIR)/cmake.mk
 CMAKE_SOURCE_SUBDIR:=build
 
 CMAKE_OPTIONS += \
-	-DCMAKE_BUILD_TYPE:STRING='None' \
+	-DCMAKE_BUILD_TYPE='None' \
 	-DBUILD_SHARED_LIBS=0 \
 	-DWITH_UPNP=0 \
 	-DWITH_AESNI=0 \
 	-DWITH_AVX=0 \
-	-DBoost_USE_STATIC_LIBS=1
+	-DBoost_USE_STATIC_LIBS=1 \
+	-Wno-dev
 
 define Package/i2pd
 	SECTION:=net
