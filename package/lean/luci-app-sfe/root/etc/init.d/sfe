@@ -42,10 +42,6 @@ start_service() {
 stop_service(){
     enable=$(uci get sfe.config.enabled 2>/dev/null)
     [ $enable -ne 1 ] && rmmod fast_classifier >/dev/null 2>&1 
-    revert_dns
-	  if [ "$DNSMASQ_RESTART" = N ]; then
-      /etc/init.d/dnsmasq restart
-    fi
 }
 
 restart(){
