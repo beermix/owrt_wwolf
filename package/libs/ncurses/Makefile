@@ -74,6 +74,7 @@ CONFIGURE_ARGS += \
 	--without-profile \
 	--with-progs \
 	--without-tests \
+	--disable-big-core \
 	--disable-home-terminfo \
 	--with-normal \
 	--with-shared \
@@ -81,8 +82,6 @@ CONFIGURE_ARGS += \
 	--with-default-terminfo-dir=/usr/share/terminfo \
 	--with-pkg-config-libdir=/usr/lib/pkgconfig \
 	--enable-widec \
-	--enable-ext-colors \
-	--disable-termcap \
 	--with-build-cppflags=-D_GNU_SOURCE
 
 CONFIGURE_VARS += \

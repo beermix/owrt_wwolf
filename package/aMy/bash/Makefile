@@ -9,18 +9,18 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bash
 
-#PKG_VERSION:=5.0
-#PKG_RELEASE:=5
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=@GNU/bash
-#PKG_HASH:=b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d
+PKG_VERSION:=5.0
+PKG_RELEASE:=5
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=@GNU/bash
+PKG_HASH:=b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d
 
-PKG_VERSION:=36f2c40
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://git.savannah.gnu.org/git/bash.git
-PKG_SOURCE_VERSION:=$(PKG_VERSION)
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz
+#PKG_VERSION:=36f2c40
+#PKG_SOURCE_PROTO:=git
+#PKG_SOURCE_URL:=https://git.savannah.gnu.org/git/bash.git
+#PKG_SOURCE_VERSION:=$(PKG_VERSION)
+#PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz
 
 PKG_INSTALL:=1
 
@@ -46,7 +46,7 @@ define Package/bash/conffiles
 /etc/bash.bash_logout
 endef
 
-TARGET_CFLAGS := -O2 $(filter-out -fno-caller-saves -O%,$(TARGET_CFLAGS))
+TARGET_CFLAGS := -O2 $(filter-out -O%,$(TARGET_CFLAGS))
 
 # Bash detects and enables certain features by runtest simple piece of code
 # which is not viable when doing cross compilation and default to no in many
