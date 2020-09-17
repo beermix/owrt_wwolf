@@ -34,7 +34,7 @@ CMAKE_OPTIONS += \
 	-DWITH_UPNP=0 \
 	-DWITH_AESNI=0 \
 	-DWITH_AVX=0 \
-	-DBoost_USE_STATIC_LIBS=1 \
+	-DBoost_USE_STATIC_RUNTIME=1 \
 	-Wno-dev
 
 define Package/i2pd
