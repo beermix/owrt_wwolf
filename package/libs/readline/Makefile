@@ -8,7 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=readline
-PKG_VERSION:=c5ad6be
+PKG_VERSION:=9d6f764
+#PKG_VERSION:=c5ad6be
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://git.savannah.gnu.org/git/readline.git
@@ -22,7 +23,6 @@ PKG_CPE_ID:=cpe:/a:gnu:readline
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
-PKG_ASLR_PIE:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
