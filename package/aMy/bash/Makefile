@@ -23,6 +23,7 @@ PKG_HASH:=b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz
 
 PKG_INSTALL:=1
+PKG_ASLR_PIE:=0
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -45,8 +46,6 @@ define Package/bash/conffiles
 /etc/bash.bashrc
 /etc/bash.bash_logout
 endef
-
-TARGET_CFLAGS := -O2 $(filter-out -O%,$(TARGET_CFLAGS))
 
 # Bash detects and enables certain features by runtest simple piece of code
 # which is not viable when doing cross compilation and default to no in many
