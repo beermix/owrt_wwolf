@@ -682,6 +682,9 @@ Xionghu Luo (1):
 Zackery Spytz (1):
       doc: Fix a typo in the documentation of the copy attribute
 
+liuhongt (1):
+      If -mavx implies -mxsave, then -mno-xsave should imply -mno-avx.
+
 diff --git a/ChangeLog b/ChangeLog
 index 9605d767a80..30c7aaf6cc0 100644
 --- a/ChangeLog
@@ -8303,6 +8306,26 @@ index bab3ab3fa36..bc59d646a4c 100644
  	isa_flag_bits |= opt->flag_canonical;
        }
      }
+diff --git a/gcc/common/config/i386/i386-common.c b/gcc/common/config/i386/i386-common.c
+index 087bb1520ed..c7841939e89 100644
+--- a/gcc/common/config/i386/i386-common.c
++++ b/gcc/common/config/i386/i386-common.c
+@@ -182,12 +182,13 @@
+ #define OPTION_MASK_ISA_AVX_UNSET \
+   (OPTION_MASK_ISA_AVX | OPTION_MASK_ISA_FMA_UNSET \
+    | OPTION_MASK_ISA_FMA4_UNSET | OPTION_MASK_ISA_F16C_UNSET \
+-   | OPTION_MASK_ISA_AVX2_UNSET | OPTION_MASK_ISA_XSAVE_UNSET)
++   | OPTION_MASK_ISA_AVX2_UNSET )
+ #define OPTION_MASK_ISA_FMA_UNSET OPTION_MASK_ISA_FMA
+ #define OPTION_MASK_ISA_FXSR_UNSET OPTION_MASK_ISA_FXSR
+ #define OPTION_MASK_ISA_XSAVE_UNSET \
+   (OPTION_MASK_ISA_XSAVE | OPTION_MASK_ISA_XSAVEOPT_UNSET \
+-   | OPTION_MASK_ISA_XSAVES_UNSET | OPTION_MASK_ISA_XSAVEC_UNSET)
++   | OPTION_MASK_ISA_XSAVES_UNSET | OPTION_MASK_ISA_XSAVEC_UNSET \
++   | OPTION_MASK_ISA_AVX_UNSET)
+ #define OPTION_MASK_ISA_XSAVEOPT_UNSET OPTION_MASK_ISA_XSAVEOPT
+ #define OPTION_MASK_ISA_AVX2_UNSET \
+   (OPTION_MASK_ISA_AVX2 | OPTION_MASK_ISA_AVX512F_UNSET)
 diff --git a/gcc/config.in b/gcc/config.in
 index a718ceaf3da..bfef2340339 100644
 --- a/gcc/config.in
