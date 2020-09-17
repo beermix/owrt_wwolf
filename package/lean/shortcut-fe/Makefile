@@ -25,12 +25,12 @@ define KernelPackage/shortcut-fe
   SUBMENU:=Network Support
   DEPENDS:=
   TITLE:=Kernel driver for SFE
-  FILES:=$(PKG_BUILD_DIR)/shortcut-fe.ko $(PKG_BUILD_DIR)/shortcut-fe-ipv6.ko
+  FILES:=$(PKG_BUILD_DIR)/shortcut-fe.ko
   KCONFIG:=CONFIG_NF_CONNTRACK_EVENTS=y \
 	   CONFIG_NF_CONNTRACK_TIMEOUT=y \
 	   CONFIG_SHORTCUT_FE=y \
 	   CONFIG_XFRM=y
-  AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)
+  AUTOLOAD:=$(call AutoLoad,09,shortcut-fe)
 endef
 
 define KernelPackage/shortcut-fe/Description
@@ -58,15 +58,12 @@ define KernelPackage/shortcut-fe-cm/Description
 Simple connection manager for the Shortcut forwarding engine.
 endef
 
-EXTRA_CFLAGS+=-DSFE_SUPPORT_IPV6
-
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C "$(LINUX_DIR)" \
 		$(KERNEL_MAKE_FLAGS) \
 		$(PKG_MAKE_FLAGS) \
 		M="$(PKG_BUILD_DIR)" \
 		EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
-		SFE_SUPPORT_IPV6=1 \
 		modules
 endef
 
