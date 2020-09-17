@@ -1,10 +1,10 @@
 CC ?= gcc
 SRC_FILES = *.c
 
-all: musl-addons
+all: musl-iconv
 
-musl-addons: $(SRC_FILES)
+musl-iconv: $(SRC_FILES)
 	$(CC) $(TARGET_CFLAGS) -o $@ $^ $(TARGET_LDFLAGS)
 
 clean:
-	rm -f musl-addons *.o
+	rm -f musl-iconv *.o
