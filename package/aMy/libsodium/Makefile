@@ -52,7 +52,8 @@ menu "Configuration"
 endmenu
 endef
 
-TARGET_CFLAGS := -Ofast $(filter-out -O%,$(TARGET_CFLAGS))
+#TARGET_CFLAGS := -Ofast $(filter-out -O%,$(TARGET_CFLAGS))
+TARGET_CFLAGS := -O2 $(filter-out -fno-caller-saves -O%,$(TARGET_CFLAGS))
 
 CONFIGURE_ARGS+= \
 	--disable-ssp \
