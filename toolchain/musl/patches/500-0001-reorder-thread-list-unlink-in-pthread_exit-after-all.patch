@@ -14,11 +14,9 @@ __dl_thread_cleanup.
  src/thread/pthread_create.c | 19 +++++++++++--------
  1 file changed, 11 insertions(+), 8 deletions(-)
 
-diff --git a/src/thread/pthread_create.c b/src/thread/pthread_create.c
-index 5f491092..6a3b0c21 100644
 --- a/src/thread/pthread_create.c
 +++ b/src/thread/pthread_create.c
-@@ -90,14 +90,7 @@ _Noreturn void __pthread_exit(void *result)
+@@ -90,14 +90,7 @@ _Noreturn void __pthread_exit(void *resu
  		exit(0);
  	}
  
@@ -34,7 +32,7 @@ index 5f491092..6a3b0c21 100644
  
  	/* Process robust list in userspace to handle non-pshared mutexes
  	 * and the detached thread case where the robust list head will
-@@ -121,6 +114,16 @@ _Noreturn void __pthread_exit(void *result)
+@@ -121,6 +114,16 @@ _Noreturn void __pthread_exit(void *resu
  	__do_orphaned_stdio_locks();
  	__dl_thread_cleanup();
  
@@ -51,6 +49,3 @@ index 5f491092..6a3b0c21 100644
  	/* This atomic potentially competes with a concurrent pthread_detach
  	 * call; the loser is responsible for freeing thread resources. */
  	int state = a_cas(&self->detach_state, DT_JOINABLE, DT_EXITING);
--- 
-2.21.0
-

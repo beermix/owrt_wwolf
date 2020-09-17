@@ -8,8 +8,6 @@ these are all flags that can be single-byte values.
  src/internal/libc.h | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/internal/libc.h b/src/internal/libc.h
-index c0614852..d47f58e0 100644
 --- a/src/internal/libc.h
 +++ b/src/internal/libc.h
 @@ -18,9 +18,9 @@ struct tls_module {
@@ -25,6 +23,3 @@ index c0614852..d47f58e0 100644
  	int threads_minus_1;
  	size_t *auxv;
  	struct tls_module *tls_head;
--- 
-2.21.0
-

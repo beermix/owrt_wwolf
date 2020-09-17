@@ -34,8 +34,6 @@ needs to be taken to produce a safe design.
  src/thread/__lock.c | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/internal/libc.h b/src/internal/libc.h
-index ac97dc7e..c0614852 100644
 --- a/src/internal/libc.h
 +++ b/src/internal/libc.h
 @@ -21,7 +21,7 @@ struct __libc {
@@ -47,8 +45,6 @@ index ac97dc7e..c0614852 100644
  	size_t *auxv;
  	struct tls_module *tls_head;
  	size_t tls_size, tls_align, tls_cnt;
-diff --git a/src/malloc/malloc.c b/src/malloc/malloc.c
-index 96982596..2553a62e 100644
 --- a/src/malloc/malloc.c
 +++ b/src/malloc/malloc.c
 @@ -26,7 +26,7 @@ int __malloc_replaced;
@@ -60,8 +56,6 @@ index 96982596..2553a62e 100644
  		while(a_swap(lk, 1)) __wait(lk, lk+1, 1, 1);
  }
  
-diff --git a/src/thread/__lock.c b/src/thread/__lock.c
-index 45557c88..5b9b144e 100644
 --- a/src/thread/__lock.c
 +++ b/src/thread/__lock.c
 @@ -18,7 +18,7 @@
@@ -73,6 +67,3 @@ index 45557c88..5b9b144e 100644
  	/* fast path: INT_MIN for the lock, +1 for the congestion */
  	int current = a_cas(l, 0, INT_MIN + 1);
  	if (!current) return;
--- 
-2.21.0
-

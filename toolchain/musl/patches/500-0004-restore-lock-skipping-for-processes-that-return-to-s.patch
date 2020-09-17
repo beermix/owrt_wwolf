@@ -17,8 +17,6 @@ memory load after the lock is taken.
  src/thread/pthread_create.c | 8 ++++----
  4 files changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/src/internal/libc.h b/src/internal/libc.h
-index d47f58e0..619bba86 100644
 --- a/src/internal/libc.h
 +++ b/src/internal/libc.h
 @@ -21,6 +21,7 @@ struct __libc {
@@ -29,8 +27,6 @@ index d47f58e0..619bba86 100644
  	int threads_minus_1;
  	size_t *auxv;
  	struct tls_module *tls_head;
-diff --git a/src/malloc/malloc.c b/src/malloc/malloc.c
-index 2553a62e..a803d4c9 100644
 --- a/src/malloc/malloc.c
 +++ b/src/malloc/malloc.c
 @@ -26,8 +26,11 @@ int __malloc_replaced;
@@ -46,8 +42,6 @@ index 2553a62e..a803d4c9 100644
  }
  
  static inline void unlock(volatile int *lk)
-diff --git a/src/thread/__lock.c b/src/thread/__lock.c
-index 5b9b144e..60eece49 100644
 --- a/src/thread/__lock.c
 +++ b/src/thread/__lock.c
 @@ -18,9 +18,11 @@
@@ -63,11 +57,9 @@ index 5b9b144e..60eece49 100644
  	if (!current) return;
  	/* A first spin loop, for medium congestion. */
  	for (unsigned i = 0; i < 10; ++i) {
-diff --git a/src/thread/pthread_create.c b/src/thread/pthread_create.c
-index 6a3b0c21..6bdfb44f 100644
 --- a/src/thread/pthread_create.c
 +++ b/src/thread/pthread_create.c
-@@ -118,8 +118,8 @@ _Noreturn void __pthread_exit(void *result)
+@@ -118,8 +118,8 @@ _Noreturn void __pthread_exit(void *resu
  	 * until the lock is released, which only happens after SYS_exit
  	 * has been called, via the exit futex address pointing at the lock.
  	 * This needs to happen after any possible calls to LOCK() that might
@@ -78,7 +70,7 @@ index 6a3b0c21..6bdfb44f 100644
  	self->next->prev = self->prev;
  	self->prev->next = self->next;
  	self->prev = self->next = self;
-@@ -339,7 +339,7 @@ int __pthread_create(pthread_t *restrict res, const pthread_attr_t *restrict att
+@@ -339,7 +339,7 @@ int __pthread_create(pthread_t *restrict
  		~(1UL<<((SIGCANCEL-1)%(8*sizeof(long))));
  
  	__tl_lock();
@@ -87,7 +79,7 @@ index 6a3b0c21..6bdfb44f 100644
  	ret = __clone((c11 ? start_c11 : start), stack, flags, args, &new->tid, TP_ADJ(new), &__thread_list_lock);
  
  	/* All clone failures translate to EAGAIN. If explicit scheduling
-@@ -363,7 +363,7 @@ int __pthread_create(pthread_t *restrict res, const pthread_attr_t *restrict att
+@@ -363,7 +363,7 @@ int __pthread_create(pthread_t *restrict
  		new->next->prev = new;
  		new->prev->next = new;
  	} else {
@@ -96,6 +88,3 @@ index 6a3b0c21..6bdfb44f 100644
  	}
  	__tl_unlock();
  	__restore_sigs(&set);
--- 
-2.21.0
-
