@@ -30,7 +30,7 @@ define KernelPackage/shortcut-fe
 	   CONFIG_NF_CONNTRACK_TIMEOUT=y \
 	   CONFIG_SHORTCUT_FE=y \
 	   CONFIG_XFRM=y
-  AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)
+  AUTOLOAD:=$(call AutoLoad,09,shortcut-fe)
 endef
 
 define KernelPackage/shortcut-fe/Description
