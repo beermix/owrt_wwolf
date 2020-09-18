@@ -443,6 +443,9 @@ Sameera Deshpande (1):
 Samuel Thibault (1):
       hurd: libgcc unwinding support over signal trampolines
 
+Segher Boessenkool (1):
+      rs6000: Properly handle LE index munging in vec_shr (PR94710)
+
 Stefan Schulze Frielinghaus (1):
       S/390: Emit vector alignment hints for z13 if AS accepts them
 
@@ -13636,6 +13639,20 @@ index 8cf6bd54b2f..aea362cdf6e 100644
  
    tree old_llu = build1 (VIEW_CONVERT_EXPR, uint64_type_node, old_fenv);
    tree old_llu_and = build2 (BIT_AND_EXPR, uint64_type_node, old_llu,
+diff --git a/gcc/config/rs6000/vector.md b/gcc/config/rs6000/vector.md
+index 21743c6be26..fa9c1616634 100644
+--- a/gcc/config/rs6000/vector.md
++++ b/gcc/config/rs6000/vector.md
+@@ -1227,7 +1227,8 @@
+   emit_move_insn (zero_reg, CONST0_RTX (<MODE>mode));
+   if (!BYTES_BIG_ENDIAN)
+     {
+-      byteshift_val = 16 - byteshift_val;
++      /* Note, byteshift_val can be 0!  */
++      byteshift_val = -byteshift_val & 15;
+       op1 = zero_reg;
+       op2 = operands[1];
+     }
 diff --git a/gcc/config/rs6000/vsx.md b/gcc/config/rs6000/vsx.md
 index 17c24551306..c5c948c9ef0 100644
 --- a/gcc/config/rs6000/vsx.md
